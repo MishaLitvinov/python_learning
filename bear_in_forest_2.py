@@ -22,22 +22,32 @@ canv.create_polygon(475, 475, 525, 475, 500, 525,\
         outline='Black', fill="SaddleBrown", width=3)#nose
 
 
-def move_bear(event):
-    if event.keysym == 'Up':
-        #canv.move(head, 0, 30)
-        canv.move(first_ear, 0, 30)
-        canv.move(second_ear, 0, 30)
-    if event.keysym == 'Down':
-        canv.move(first_ear, 0, -3)
-        canv.move(second_ear, 0, -3)
-    if event.keysym == 'Left':
-        canv.move(1, -3, 0)
-    else:
-        canv.move(1, 30, 0)
 
+def move_bear(event):
+    match event.keysym:
+        case 'Up':
+           canv.move(1, 0, -30)
+           canv.move(first_ear, 0, -30)
+           canv.move(second_ear, 0, -30)
+        case 'Down':
+            canv.move(1, 0, 30)
+            canv.move(first_ear, 0, 30)
+            canv.move(second_ear, 0, 30)
+        case 'Left':
+            canv.move(1, -30, 0)
+            canv.move(first_ear, -30, 0)
+            canv.move(second_ear, -30, 0)
+        case 'Right':
+            canv.move(1, 30, 0)
+            canv.move(first_ear, 30, 0)
+            canv.move(second_ear, 30, 0)
+        case _:
+            canv.move(1, 0, 0)
+    
 canv.bind_all('<KeyPress-Up>', move_bear)
 canv.bind_all('<KeyPress-Down>', move_bear)
 canv.bind_all('<KeyPress-Left>', move_bear)
 canv.bind_all('<KeyPress-Right>', move_bear)
+
 
 window.mainloop()
