@@ -6,19 +6,21 @@ canv=Canvas(window,width=1000,
             height=1000, bg='light blue')
 canv.place(x=0,y=0)
 
-head = canv.create_oval(300,300, 700,700,
+head = canv.create_oval(300, 300, 700, 700,
                  width=0, fill='Chocolate',outline='SaddleBrown')
 first_ear = canv.create_oval(550,300, 750,500,
                  width=0, fill='Chocolate',outline='SaddleBrown')
-second_ear = canv.create_oval(250,300, 450,500,
+second_ear = canv.create_oval(250, 300, 450, 500,
                  width=0, fill='Chocolate',outline='SaddleBrown')
-first_eye=canv.create_oval(400,400, 420,430,
+body = canv.create_oval(250, 600, 750, 1200,
+                 width=0, fill='Chocolate',outline='Black')
+first_eye=canv.create_oval(400, 400, 420, 430,
                  width=1.5, fill='Blue',outline='Black')
-second_eye=canv.create_oval(580,400, 600,430,
+second_eye=canv.create_oval(580, 400, 600, 430,
                  width=1.5, fill='Blue',outline='Black')
-mouth=canv.create_arc(400,475, 600,600,
+mouth=canv.create_arc(400, 475, 600, 600,
                  extent=-180, style=ARC,width=3,outline='red')
-nose=canv.create_polygon(475, 475, 525, 475, 500, 525,\
+nose=canv.create_polygon(475, 475, 525, 475, 500, 525,
         outline='Black', fill="SaddleBrown", width=3)
 
 def move_bear_parts(x, y):
@@ -29,6 +31,7 @@ def move_bear_parts(x, y):
     canv.move(second_eye, x, y)
     canv.move(mouth, x, y)
     canv.move(nose, x, y)
+    canv.move(body, x, y)
 
 step=30
 
