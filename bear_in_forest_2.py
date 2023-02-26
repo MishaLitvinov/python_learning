@@ -6,12 +6,12 @@ canv=Canvas(window,width=1000,
             height=1000, bg='light blue')
 canv.place(x=0,y=0)
 
-canv.create_oval(300,300, 700,700,
-                 width=0, fill='Chocolate',outline='SaddleBrown')#head
-canv.create_oval(550,300, 750,500,
-                 width=0, fill='Chocolate',outline='SaddleBrown')#first ear
-canv.create_oval(250,300, 450,500,
-                 width=0, fill='Chocolate',outline='SaddleBrown')#second ear
+head = canv.create_oval(300,300, 700,700,
+                 width=0, fill='Chocolate',outline='SaddleBrown')
+first_ear = canv.create_oval(550,300, 750,500,
+                 width=0, fill='Chocolate',outline='SaddleBrown')
+second_ear = canv.create_oval(250,300, 450,500,
+                 width=0, fill='Chocolate',outline='SaddleBrown')
 canv.create_oval(400,400, 420,430,
                  width=1.5, fill='Blue',outline='Black')#first eye
 canv.create_oval(580,400, 600,430,
@@ -24,13 +24,16 @@ canv.create_polygon(475, 475, 525, 475, 500, 525,\
 
 def move_bear(event):
     if event.keysym == 'Up':
-        canv.move(1, 0, -3)
+        #canv.move(head, 0, 30)
+        canv.move(first_ear, 0, 30)
+        canv.move(second_ear, 0, 30)
     if event.keysym == 'Down':
-        canv.move(1, 0, 3)
+        canv.move(first_ear, 0, -3)
+        canv.move(second_ear, 0, -3)
     if event.keysym == 'Left':
         canv.move(1, -3, 0)
     else:
-        canv.move(1, 3, 0)
+        canv.move(1, 30, 0)
 
 canv.bind_all('<KeyPress-Up>', move_bear)
 canv.bind_all('<KeyPress-Down>', move_bear)
