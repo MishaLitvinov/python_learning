@@ -20,11 +20,11 @@ class bear:
 
     def draw(self):
         self.draw_parts.append (canv.create_oval(300,300, 700,700,
-                        width=0, fill= self.color_head,outline='SaddleBrown'))
+                        fill= self.color_head))
         self.draw_parts.append(canv.create_oval(550,300, 750,500,
-                        width=0, fill=self.color_head,outline='SaddleBrown'))
+                        fill=self.color_head))
         self.draw_parts.append(canv.create_oval(250,300, 450,500,
-                        width=0, fill=self.color_head,outline='SaddleBrown'))
+                        fill=self.color_head))
         self.draw_parts.append(canv.create_oval(400,400, 420,430,
                         width=1.5, fill=self.color_eyes,outline='Black'))
         self.draw_parts.append(canv.create_oval(580,400, 600,430,
@@ -41,9 +41,14 @@ class bear:
 potapik = bear('Potapik','Chocolate','Blue','SaddleBrown','Red')
 potapik.draw()
 
-obnimaha = bear('Obnimaha','SaddleBrown','Green','Black','Red')
+obnimaha = bear('Obnimaha','SaddleBrown','MediumSpringGreen','Black','Red')
 obnimaha.draw()
 
+mordastik = bear('Mordastik','Sienna','DarkTurquoise','SaddleBrown','DarkRed')
+mordastik.draw()
+
+bosya = bear('Bosya','Silver','Aquamarine','Black','Maroon')
+bosya.draw()
 
 def move_bear(event):
     match event.keysym:
@@ -55,15 +60,29 @@ def move_bear(event):
             potapik.move(-step, 0)
         case 'Right':
             potapik.move(step, 0)
-    
-
+        case 'x':
+            obnimaha.move(step, 0)
+        case 'z':
+            obnimaha.move(-step, 0)
+        case 'w':
+            bosya.move(step,0 )
+        case 's':
+            bosya.move(-step, 0)
+        case 'y':
+            mordastik.move(step,0 )
+        case 't':
+            mordastik.move(-step, 0)
   
 
 canv.bind_all('<KeyPress-Up>', move_bear)
 canv.bind_all('<KeyPress-Down>', move_bear)
 canv.bind_all('<KeyPress-Left>', move_bear)
 canv.bind_all('<KeyPress-Right>', move_bear)
-
-
+canv.bind_all('<KeyPress-x>', move_bear)
+canv.bind_all('<KeyPress-z>', move_bear)
+canv.bind_all('<KeyPress-w>', move_bear)
+canv.bind_all('<KeyPress-s>', move_bear)
+canv.bind_all('<KeyPress-t>', move_bear)
+canv.bind_all('<KeyPress-y>', move_bear)
 
 window.mainloop()
