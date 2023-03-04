@@ -8,23 +8,28 @@ canv.place(x=0,y=0)
 
 step=30
 
-class bear:
+class animals:
     def __init__ (self, name, color_head, color_eyes, color_nose, color_mouth):
         self.name = name
         self.color_head = color_head
-        self.draw_parts = []
-        self.color_eyes = color_eyes
+        self.color_eyes = color_eyes 
         self.color_nose = color_nose
         self.color_mouth = color_mouth
-        
+        self.draw_parts = [] 
+
+    def move(self, x, y):
+        for part in self.draw_parts:
+                canv.move(part, x, y)
+
+class bear(animals):
 
     def draw(self):
         self.draw_parts.append (canv.create_oval(300,300, 700,700,
-                        fill= self.color_head))
+                        width=0, fill= self.color_head))
         self.draw_parts.append(canv.create_oval(550,300, 750,500,
-                        fill=self.color_head))
+                        width=0, fill=self.color_head))
         self.draw_parts.append(canv.create_oval(250,300, 450,500,
-                        fill=self.color_head))
+                        width=0, fill=self.color_head))
         self.draw_parts.append(canv.create_oval(400,400, 420,430,
                         width=1.5, fill=self.color_eyes,outline='Black'))
         self.draw_parts.append(canv.create_oval(580,400, 600,430,
@@ -34,10 +39,7 @@ class bear:
         self.draw_parts.append(canv.create_polygon(475, 475, 525, 475, 500, 525,\
                 outline='Black', fill=self.color_nose, width=2))
 
-    def move(self, x, y):
-        for part in self.draw_parts:
-                canv.move(part, x, y)
-
+    
 potapik = bear('Potapik','Chocolate','Blue','SaddleBrown','Red')
 potapik.draw()
 
