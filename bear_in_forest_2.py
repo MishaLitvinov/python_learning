@@ -1,10 +1,11 @@
-from tkinter import *
+import time
 
-window=Tk()
+from tkinter import *
+window = Tk()
 window.geometry('2000x1000')
 canv=Canvas(window,width=2000,
             height=1000, bg='light blue')
-canv.place(x=0,y=0)
+canv.place(x = 0, y=0)
 
 step=30
 
@@ -39,6 +40,27 @@ class bear(animals):
         self.draw_parts.append(canv.create_polygon(475, 475, 525, 475, 500, 525,\
                 outline='Black', fill=self.color_nose, width=2))
 
+
+class rabits(animals):
+
+    def draw(self):
+        self.draw_parts.append (canv.create_oval(300,300, 700,700,
+                        width=0, fill= self.color_head))
+        self.draw_parts.append(canv.create_oval(550,50, 700,500,
+                        width=0, fill=self.color_head))
+        self.draw_parts.append(canv.create_oval(300,50, 450,500,
+                        width=0, fill=self.color_head))
+        self.draw_parts.append(canv.create_oval(400,400, 420,430,
+                        width=1.5, fill=self.color_eyes,outline='Black'))
+        self.draw_parts.append(canv.create_oval(580,400, 600,430,
+                        width=1.5, fill=self.color_eyes,outline='Black'))
+        self.draw_parts.append(canv.create_arc(400,475, 600,600,
+                        extent=-180, style=ARC,width=3,outline=self.color_mouth))
+        self.draw_parts.append(canv.create_polygon(475, 475, 525, 475, 500, 525,\
+                outline='Black', fill=self.color_nose, width=2))
+       
+   
+        
     
 potapik = bear('Potapik','Chocolate','Blue','SaddleBrown','Red')
 potapik.draw()
@@ -51,6 +73,10 @@ mordastik.draw()
 
 bosya = bear('Bosya','Silver','Aquamarine','Black','Maroon')
 bosya.draw()
+
+kabasya = rabits('Kabasya','Silver','Aquamarine','Black','Maroon')
+kabasya.draw()
+
 
 def move_bear(event):
     match event.keysym:
